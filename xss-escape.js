@@ -36,6 +36,10 @@
         return !isArray(value) && (value instanceof Object);
     };
 
+    var isNumber = function (value) {
+        return typeof value === 'number';
+    };
+
     var xssEscape = function (data) {
         var escapedData, character, key, i;
 
@@ -46,6 +50,9 @@
                     escapeRegex[character], escapedCharacters[character]
                 );
             }
+        }
+        else if(isNumber(data)) {
+            escapedData = data;
         }
         else if(isArray(data)) {
             escapedData = [];

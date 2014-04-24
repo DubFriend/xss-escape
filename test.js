@@ -44,3 +44,8 @@ exports.escapeNestedObject = function (test) {
     test.deepEqual(xss({ a: '&', b: [{c: '/'}]}), { a: '&amp;', b: [{c: '&#x2F;'}]});
     test.done();
 };
+
+exports.escapeNumber = function (test) {
+    test.strictEqual(xss(5), 5);
+    test.done();
+};
