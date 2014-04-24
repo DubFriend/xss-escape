@@ -5,12 +5,12 @@ Cross Site Scripting attacks.
 
 Escapes the following characters to there respective html character codes.
 
-'&' -> '&amp;'
-'<' -> '&lt;'
-'>' -> '&gt;'
-'"' -> '&quot;'
-"'" -> '&#x27;'
-'/' -> '&#x2F;'
+- &amp; -> &amp;amp;
+- &lt; -> &amp;lt;
+- &gt; -> &amp;gt;
+- " -> &amp;quot;
+- " -> &amp;#x27;
+- ' -> &amp;#x2F;
 
 ##In NodeJS
 `npm install xss-escape`
