@@ -1,0 +1,29 @@
+{
+  "name": "xss-escape",
+  "version": "0.0.0",
+  "description": "html xss escaping function",
+  "main": "xss-escape.js",
+  "scripts": {
+    "test": "nodeunit test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DubFriend/xss-escape"
+  },
+  "keywords": [
+    "xss",
+    "escape",
+    "html",
+    "javascript"
+  ],
+  "author": "Brian Detering <BDeterin@gmail.com> (http://www.briandetering.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DubFriend/xss-escape/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-nodeunit": "~0.3.3",
+    "grunt-contrib-watch": "~0.6.1"
+  }
+}
