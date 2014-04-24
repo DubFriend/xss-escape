@@ -1,6 +1,6 @@
 {
   "name": "xss-escape",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "html xss escaping function",
   "main": "xss-escape.js",
   "scripts": {
