@@ -6,6 +6,13 @@ module.exports = function(grunt) {
             all: ['test.js']
         },
 
+        benchmark: {
+            all: {
+                src: ['benchmark.js']
+                // ,dest: 'benchmarkResults.csv'
+            }
+        },
+
         watch: {
             scripts: {
                 files: ['**/*'],
@@ -15,7 +22,8 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-benchmark');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['nodeunit']);
+    grunt.registerTask('default', ['nodeunit', 'benchmark']);
 };

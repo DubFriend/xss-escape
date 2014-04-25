@@ -1,6 +1,6 @@
 {
   "name": "xss-escape",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "html xss escaping function",
   "main": "xss-escape.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-contrib-nodeunit": "~0.3.3",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-benchmark": "~0.2.0"
   }
 }

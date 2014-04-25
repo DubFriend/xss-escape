@@ -33,6 +33,9 @@ var escapedObject = xssEscape({ a: 'foo', [{ b: 'bar' }, 'baz' ] });
 ```
 
 ##Run Tests
-While in the projects root directory run.
-`npm install`
+While in the project's root directory run.
 `nodeunit test.js`
+
+##Run Benchmarks
+While in the project's root directory run.
+`grunt benchmark`

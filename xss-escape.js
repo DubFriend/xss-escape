@@ -6,24 +6,6 @@
 (function () {
     'use strict';
 
-    var escapedCharacters = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#x27;',
-        '/': '&#x2F;'
-    };
-
-    var escapeRegex = {
-        '&': /&/g,
-        '<': /</g,
-        '>': />/g,
-        '"': /"/g,
-        "'": /'/g,
-        '/': /\//g
-    };
-
     var isString = function (data) {
         return typeof data === 'string';
     };
@@ -33,22 +15,73 @@
     };
 
     var isObject = function (value) {
-        return !isArray(value) && (value instanceof Object);
+        return !isArray(value) && value instanceof Object;
     };
 
     var isNumber = function (value) {
         return typeof value === 'number';
     };
 
-    var xssEscape = function (data) {
-        var escapedData, character, key, i;
+    var charForLoopStrategy = function (unescapedString) {
+        var i, character, escapedString = '';
+
+        for(i = 0; i < unescapedString.length; i += 1) {
+            character = unescapedString.charAt(i);
+            switch(character) {
+                case '<':
+                    escapedString += '&lt;';
+                    break;
+                case '>':
+                    escapedString += '&gt;';
+                    break;
+                case '&':
+                    escapedString += '&amp;';
+                    break;
+                case '/':
+                    escapedString += '&#x2F;';
+                    break;
+                case '"':
+                    escapedString += '&quot;';
+                    break;
+                case "'":
+                    escapedString += '&#x27;';
+                    break;
+                default:
+                    escapedString += character;
+            }
+        }
+
+        return escapedString;
+    };
+
+    var regexStrategy = function (string) {
+        return string
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, "&#x27;")
+            .replace(/\//g, '&#x2F;');
+    };
+
+    var shiftToRegexStrategyThreshold = 32;
+
+    var xssEscape = function (data, forceStrategy) {
+        var escapedData, character, key, i, charArray = [], stringLength;
 
         if(isString(data)) {
-            escapedData = data;
-            for(character in escapedCharacters) {
-                escapedData = escapedData.replace(
-                    escapeRegex[character], escapedCharacters[character]
-                );
+            stringLength = data.length;
+            if(forceStrategy === 'charForLoopStrategy') {
+                escapedData = charForLoopStrategy(data);
+            }
+            else if(forceStrategy === 'regexStrategy') {
+                escapedData = regexStrategy(data);
+            }
+            else if(stringLength > shiftToRegexStrategyThreshold) {
+                escapedData = regexStrategy(data);
+            }
+            else {
+                escapedData = charForLoopStrategy(data);
             }
         }
         else if(isNumber(data)) {

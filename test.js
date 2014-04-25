@@ -1,51 +1,106 @@
 var xss = require('./xss-escape');
 
-exports.escapeAmpersand = function (test) {
-    test.strictEqual(xss('a&b&c'), 'a&amp;b&amp;c');
+exports.escapeAmpersandCharForLoopStrategy = function (test) {
+    test.strictEqual(xss('a&b&c', 'charForLoopStrategy'), 'a&amp;b&amp;c');
     test.done();
 };
 
-exports.escapeLessThan = function (test) {
-    test.strictEqual(xss('a<b<c'), 'a&lt;b&lt;c');
+exports.escapeLessThanCharForLoopStrategy = function (test) {
+    test.strictEqual(xss('a<b<c', 'charForLoopStrategy'), 'a&lt;b&lt;c');
     test.done();
 };
 
-exports.escapeGreaterThan = function (test) {
-    test.strictEqual(xss('a>b>c'), 'a&gt;b&gt;c');
+exports.escapeGreaterThanCharForLoopStrategy = function (test) {
+    test.strictEqual(xss('a>b>c', 'charForLoopStrategy'), 'a&gt;b&gt;c');
     test.done();
 };
 
-exports.escapeDoubleQuote = function (test) {
-    test.strictEqual(xss('a"b"c'), 'a&quot;b&quot;c');
+exports.escapeDoubleQuoteCharForLoopStrategy = function (test) {
+    test.strictEqual(xss('a"b"c', 'charForLoopStrategy'), 'a&quot;b&quot;c');
     test.done();
 };
 
-exports.escapeSingleQuote = function (test) {
-    test.strictEqual(xss("a'b'c"), 'a&#x27;b&#x27;c');
+exports.escapeSingleQuoteCharForLoopStrategy = function (test) {
+    test.strictEqual(xss("a'b'c", 'charForLoopStrategy'), 'a&#x27;b&#x27;c');
     test.done();
 };
 
-exports.escapeForwardSlash = function (test) {
-    test.strictEqual(xss("a/b/c"), 'a&#x2F;b&#x2F;c');
+exports.escapeForwardSlashCharForLoopStrategy = function (test) {
+    test.strictEqual(xss("a/b/c", 'charForLoopStrategy'), 'a&#x2F;b&#x2F;c');
     test.done();
 };
 
-exports.escapeSimpleArray = function (test) {
-    test.deepEqual(xss(['a&', 'b/']), ['a&amp;', 'b&#x2F;']);
+exports.escapeSimpleArrayCharForLoopStrategy = function (test) {
+    test.deepEqual(xss(['a&', 'b/'], 'charForLoopStrategy'), ['a&amp;', 'b&#x2F;']);
     test.done();
 };
 
-exports.escapeSimpleObject = function (test) {
-    test.deepEqual(xss({ a: '&', b:'/' }), { a :'&amp;', b: '&#x2F;' });
+exports.escapeSimpleObjectCharForLoopStrategy = function (test) {
+    test.deepEqual(xss({ a: '&', b:'/' }, 'charForLoopStrategy'), { a :'&amp;', b: '&#x2F;' });
     test.done();
 };
 
-exports.escapeNestedObject = function (test) {
-    test.deepEqual(xss({ a: '&', b: [{c: '/'}]}), { a: '&amp;', b: [{c: '&#x2F;'}]});
+exports.escapeNestedObjectCharForLoopStrategy = function (test) {
+    test.deepEqual(xss({ a: '&', b: [{c: '/'}]}, 'charForLoopStrategy'), { a: '&amp;', b: [{c: '&#x2F;'}]});
     test.done();
 };
 
-exports.escapeNumber = function (test) {
-    test.strictEqual(xss(5), 5);
+exports.escapeNumberCharForLoopStrategy = function (test) {
+    test.strictEqual(xss(5), 5, 'charForLoopStrategy');
+    test.done();
+};
+
+
+
+
+
+
+exports.escapeAmpersandRegex = function (test) {
+    test.strictEqual(xss('a&b&c', 'regexStrategy'), 'a&amp;b&amp;c');
+    test.done();
+};
+
+exports.escapeLessThanRegex = function (test) {
+    test.strictEqual(xss('a<b<c', 'regexStrategy'), 'a&lt;b&lt;c');
+    test.done();
+};
+
+exports.escapeGreaterThanRegex = function (test) {
+    test.strictEqual(xss('a>b>c', 'regexStrategy'), 'a&gt;b&gt;c');
+    test.done();
+};
+
+exports.escapeDoubleQuoteRegex = function (test) {
+    test.strictEqual(xss('a"b"c', 'regexStrategy'), 'a&quot;b&quot;c');
+    test.done();
+};
+
+exports.escapeSingleQuoteRegex = function (test) {
+    test.strictEqual(xss("a'b'c", 'regexStrategy'), 'a&#x27;b&#x27;c');
+    test.done();
+};
+
+exports.escapeForwardSlashRegex = function (test) {
+    test.strictEqual(xss("a/b/c", 'regexStrategy'), 'a&#x2F;b&#x2F;c');
+    test.done();
+};
+
+exports.escapeSimpleArrayRegex = function (test) {
+    test.deepEqual(xss(['a&', 'b/'], 'regexStrategy'), ['a&amp;', 'b&#x2F;']);
+    test.done();
+};
+
+exports.escapeSimpleObjectRegex = function (test) {
+    test.deepEqual(xss({ a: '&', b:'/' }, 'regexStrategy'), { a :'&amp;', b: '&#x2F;' });
+    test.done();
+};
+
+exports.escapeNestedObjectRegex = function (test) {
+    test.deepEqual(xss({ a: '&', b: [{c: '/'}]}, 'regexStrategy'), { a: '&amp;', b: [{c: '&#x2F;'}]});
+    test.done();
+};
+
+exports.escapeNumberRegex = function (test) {
+    test.strictEqual(xss(5), 5, 'regexStrategy');
     test.done();
 };
