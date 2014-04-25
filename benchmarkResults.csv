@@ -1,0 +1,9 @@
+name,date,error,count,cycles,hz
+"charactersVariableCharForLoopStrategy","Fri Apr 25 2014 00:50:32 GMT-0700 (PDT)",,76642,6,1493644.172867028
+"charactersVariableRegexStrategy","Fri Apr 25 2014 00:50:38 GMT-0700 (PDT)",,51051,3,948474.1732542124
+"characters24CharForLoopStrategy","Fri Apr 25 2014 00:50:43 GMT-0700 (PDT)",,75314,3,1455777.3784723082
+"characters240CharForLoopStrategy","Fri Apr 25 2014 00:50:49 GMT-0700 (PDT)",,7759,4,149563.8015540453
+"characters2400CharForLoopStrategy","Fri Apr 25 2014 00:50:54 GMT-0700 (PDT)",,788,4,14913.733320417541
+"characters24RegexStrategy","Fri Apr 25 2014 00:50:59 GMT-0700 (PDT)",,50847,4,955385.5087798244
+"characters240RegexStrategy","Fri Apr 25 2014 00:51:05 GMT-0700 (PDT)",,17917,3,339861.7606987733
+"characters2400RegexStrategy","Fri Apr 25 2014 00:51:10 GMT-0700 (PDT)",,2544,3,48248.265390698754

@@ -1,9 +1,8 @@
 #xss-escape
 
-Escapes your strings and objects or arrays of strings for prevention of
-Cross Site Scripting attacks.
+Escapes strings for safe insertion into html, and helps prevents cross site scripting attacks.
 
-Escapes the following characters to there respective html character codes.
+xss-escape escapes the following characters to their respective html character codes.
 
 - &amp; -> &amp;amp;
 - &lt; -> &amp;lt;
@@ -33,9 +32,18 @@ var escapedObject = xssEscape({ a: 'foo', [{ b: 'bar' }, 'baz' ] });
 ```
 
 ##Run Tests
-While in the project's root directory run.
-`nodeunit test.js`
+While in the project's root directory.
+
+ - `npm install`
+ - `nodeunit test.js`
+
+or run tests on every file save.
+
+ - `grunt watch`
+
 
 ##Run Benchmarks
 While in the project's root directory run.
-`grunt benchmark`
+
+ - `npm install`
+ - `grunt benchmark`
