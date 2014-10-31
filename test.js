@@ -50,7 +50,10 @@ exports.escapeNumberCharForLoopStrategy = function (test) {
     test.done();
 };
 
-
+exports.escapeBooleanCharForLoopStrategy = function (test) {
+    test.strictEqual(xss(true), true, 'charForLoopStrategy');
+    test.done();
+};
 
 
 
@@ -102,5 +105,10 @@ exports.escapeNestedObjectRegex = function (test) {
 
 exports.escapeNumberRegex = function (test) {
     test.strictEqual(xss(5), 5, 'regexStrategy');
+    test.done();
+};
+
+exports.escapeBooleanCharForLoopStrategy = function (test) {
+    test.strictEqual(xss(true), true, 'regexStrategy');
     test.done();
 };

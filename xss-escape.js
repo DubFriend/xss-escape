@@ -22,6 +22,10 @@
         return typeof value === 'number';
     };
 
+    var isBoolean = function (value) {
+        return typeof value === 'boolean';
+    };
+
     var charForLoopStrategy = function (unescapedString) {
         var i, character, escapedString = '';
 
@@ -84,7 +88,7 @@
                 escapedData = charForLoopStrategy(data);
             }
         }
-        else if(isNumber(data)) {
+        else if(isNumber(data) || isBoolean(data)) {
             escapedData = data;
         }
         else if(isArray(data)) {

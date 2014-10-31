@@ -11,6 +11,9 @@ xss-escape escapes the following characters to their respective html character c
 - ' -> &amp;#x27;
 - / -> &amp;#x2F;
 
+* Note that xss-escape only protects data being used in the body of html elements.
+It does not protect in other contexts such as html attribute or url contexts.
+
 ##In NodeJS
 `npm install xss-escape`
 ```js

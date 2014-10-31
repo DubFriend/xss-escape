@@ -1,6 +1,6 @@
 {
   "name": "xss-escape",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Escapes content for prevention of XSS (Cross Site Scripting) attacks.",
   "main": "xss-escape.js",
   "scripts": {
@@ -13,6 +13,10 @@
   "keywords": [
     "xss",
     "escape",
+    "sanitization",
+    "security",
+    "injection",
+    "entities",
     "html",
     "scripting",
     "attack"
